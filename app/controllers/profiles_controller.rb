@@ -2,8 +2,7 @@ class ProfilesController < ApplicationController
   before_action :only_curent_user, only: :new
   # GET to /users/:user_id/profile/new
   def new
-    # Render blank profile details form
-    ""
+    @profile = Profile.new
   end
   
   private
