@@ -1,4 +1,7 @@
-<div class="container">
-  <div class="row">User: <%= @user.inspect %> </div>
-  <div class="row">Profile: <%= @profile.inspect %></div>
-</div>
+<%= @user.profile.first_name %> <%= @user.profile.last_name %>
+<%= @user.profile.job_title %>
+<% if current_user.plan_id == 2 %>
+  <%= @user.profile.phone_number %>
+  <%= @user.profile.contact_email %>
+<% end %>
+<%= @user.profile.description %>
