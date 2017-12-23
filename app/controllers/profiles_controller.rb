@@ -17,7 +17,11 @@ class ProfilesController < ApplicationController
     else
       render action: :new
     end
-    
+  end
+  
+  #GET to /users/:user_id/profile/edit
+  def edit
+    @profile = Profile.find_by_user_id(current_user.id)
   end
   
   private
