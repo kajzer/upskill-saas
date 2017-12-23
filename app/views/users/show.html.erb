@@ -1,8 +1,40 @@
-<%= image_tag @user.profile.avatar.url %>
-<%= @user.profile.first_name %> <%= @user.profile.last_name %>
-<%= @user.profile.job_title %>
-<% if current_user.plan_id == 2 %>
-  <%= @user.profile.phone_number %>
-  <%= @user.profile.contact_email %>
-<% end %>
-<%= @user.profile.description %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+
+            <div class="card hovercard">
+                <div class="cardheader">
+
+                </div>
+                <div class="avatar">
+                    <%= image_tag @user.profile.avatar.url %>
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <%= @user.profile.first_name %> <%= @user.profile.last_name %>
+                    </div>
+
+                    <div class="desc"><i class="glyphicon glyphicon-briefcase"></i> <%= @user.profile.job_title %></div>
+      
+                    <% if current_user.plan_id == 2 %>
+                      <div class="desc"><i class="glyphicon glyphicon-earphone"></i> <%= @user.profile.phone_number %></div>
+                      <div class="desc"><i class="glyphicon glyphicon-envelope"></i> <%= @user.profile.contact_email %></div>
+                    <% end %>
+                    
+                    <div class="desc top-buffer"><%= @user.profile.description %></div>
+                </div>
+            </div>
+
+        </div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
