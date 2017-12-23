@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :only_curent_user, only: :new
+  before_action :authenticate_user!
+  before_action :only_curent_user
   # GET to /users/:user_id/profile/new
   def new
     @profile = Profile.new
@@ -42,6 +43,11 @@ class ProfilesController < ApplicationController
   end
   
   def only_curent_user
+    @user = User.find(params[:user_id])
+    redirect_to(root_url) unless @user == current_user
+  end
+  
+  def only_curent_user_mine
     unless (user_signed_in? && params[:user_id].to_i == current_user.id)
       #flash[:notice] = "#{current_user.id} and evalute to: #{params[:user_id].to_i == current_user.id.to_i}"
       flash[:notice] = "You are trying to enter restricted area for you"
